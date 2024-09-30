@@ -2347,9 +2347,10 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 
 [extras]
 h5py = ["h5py"]
+numpy = ["numpy"]
 tensorflow = ["tensorflow"]
 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "d7620be26c4ed4e57f8e3da6b3dba96f31ba02fd1f700846f5d9a9e45c951d82"
+content-hash = "32e913cd307eeac06fb6f270c2ef893209ab0dcf92dc0437d8255936893ce849"

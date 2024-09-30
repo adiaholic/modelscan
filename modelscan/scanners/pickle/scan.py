@@ -8,6 +8,9 @@ from modelscan.tools.picklescanner import (
     scan_pickle_bytes,
     scan_pytorch,
 )
+from modelscan.error import (
+    DependencyError,
+)
 from modelscan.model import Model
 from modelscan.settings import SupportedModelFormats
 
@@ -52,6 +55,20 @@ class NumpyUnsafeOpScan(ScanBase):
             format_property.value for format_property in model.get_context("formats")
         ]:
             return None
+
+        dep_error = self.handle_binary_dependencies()
+        if dep_error:
+            return ScanResults(
+                [],
+                [
+                    DependencyError(
+                        self.name(),
+                        f"To use {self.full_name()}, please install modelscan with numpy extras. `pip install 'modelscan[ numpy ]'` if you are using pip.",
+                        model,
+                    )
+                ],
+                [],
+            )
 
         results = scan_numpy(
             model=model,

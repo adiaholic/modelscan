@@ -227,9 +227,9 @@ def scan_numpy(model: Model, settings: Dict[str, Any]) -> ScanResults:
 
     elif magic == np.lib.format.MAGIC_PREFIX:
         # .npy file
-        version = np.lib.format.read_magic(stream)  # type: ignore[no-untyped-call]
-        np.lib.format._check_version(version)  # type: ignore[attr-defined]
-        _, _, dtype = np.lib.format._read_array_header(stream, version)  # type: ignore[attr-defined]
+        version = np.lib.format.read_magic(stream)
+        np.lib.format._check_version(version)
+        _, _, dtype = np.lib.format._read_array_header(stream, version)
 
         if dtype.hasobject:
             return scan_pickle_bytes(model, settings, scan_name, True, stream.tell())

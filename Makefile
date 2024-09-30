@@ -1,7 +1,7 @@
 VERSION ?= $(shell dunamai from git --style pep440 --format "{base}.dev{distance}+{commit}")
 
 install-dev:
-	poetry install --with dev --with test --extras "tensorflow h5py"
+	poetry install --with dev --with test --extras "tensorflow h5py numpy"
 	pre-commit install
 
 install:
@@ -11,7 +11,7 @@ install-prod:
 	poetry install --with prod
 
 install-test:
-	poetry install --with test --extras "tensorflow h5py"
+	poetry install --with test --extras "tensorflow h5py numpy"
 
 clean:
 	pip uninstall modelscan
